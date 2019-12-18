@@ -7,8 +7,8 @@ class App extends React.Component {
 
     // Callback that will be called whenever form is submitted from SearchBar component.
     // Gets added onto the request made with axios.create() in youtube.js. 
-    onTermSubmit = (term) => {
-        youtube.get('/search', {
+    onTermSubmit = async (term) => {
+        const response = await youtube.get('/search', {
             params: {
                 q: term
             }
