@@ -7,7 +7,7 @@ import youtube from '../apis/youtube';
 class App extends React.Component {
 
     // initializing state.videos as an empty array.
-    state = { videos: [] };
+    state = { videos: [], selectedVideo: null };
  
     onTermSubmit = async (term) => {
         const response = await youtube.get('/search', {
@@ -29,12 +29,16 @@ class App extends React.Component {
         // callback passed to SearchBar for video search input.
     }
 
+    onVideoSelect = (video) => {
+        console.log('Coming from App.js', video);
+    }
+
     render(){
         return(
             <div className="ui container">
                 <SearchBar onFormSubmit={this.onTermSubmit}/>
                 {/* I have recieved {this.state.videos.length} videos from my search. */}
-                <VideoList videos={this.state.videos}/>
+                <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos}/>
             </div>
         );
     }
