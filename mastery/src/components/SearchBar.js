@@ -12,7 +12,7 @@ class SearchBar extends React.Component{
     // input onChange callback
     onInputChange = (event) => {
         this.setState({ term: event.target.value });
-        console.log(this.state.term);
+        //console.log(this.state.term);
     }
 
     // reset onClick callback
