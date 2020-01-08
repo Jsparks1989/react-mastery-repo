@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from './SearchBar';
 import VideoList from './VideoList';
+import VideoDetail from './VideoDetail';
 import youtube from '../apis/youtube';
 
 
@@ -31,6 +32,7 @@ class App extends React.Component {
 
     onVideoSelect = (video) => {
         console.log('Coming from App.js', video);
+        this.setState({ selectedVideo: video });
     }
 
     render(){
@@ -39,6 +41,7 @@ class App extends React.Component {
                 <SearchBar onFormSubmit={this.onTermSubmit}/>
                 {/* I have recieved {this.state.videos.length} videos from my search. */}
                 <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos}/>
+                <VideoDetail video={this.state.selectedVideo} />
             </div>
         );
     }
