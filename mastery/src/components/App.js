@@ -33,7 +33,7 @@ class App extends React.Component {
         return(
             <div className="ui container">
                 <SearchBar onFormSubmit={this.onTermSubmit}/>
-                I have recieved {this.state.videos.length} videos from my search.
+                {/* I have recieved {this.state.videos.length} videos from my search. */}
                 <VideoList videos={this.state.videos}/>
             </div>
         );
