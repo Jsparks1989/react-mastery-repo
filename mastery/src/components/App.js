@@ -17,12 +17,6 @@ class App extends React.Component {
             }
         });
 
-        /*
-         * 'response' is the entire response object recieved from youtube.
-         * Our list of videos recieved from our api request is located at:
-         * response.data.items
-         * Set state.videos to the array of videos recieved from youtube.
-         */
         this.setState({ videos: response.data.items });
     }
 
@@ -39,10 +33,16 @@ class App extends React.Component {
         return(
             <div className="ui container">
                 <SearchBar onFormSubmit={this.onTermSubmit}/>
-                {/* I have recieved {this.state.videos.length} videos from my search. */}
-                <VideoDetail video={this.state.selectedVideo} />
-                <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos}/>
-                
+                <div className="ui grid">
+                    <div className="ui row">
+                        <div className="eleven wide column">
+                            <VideoDetail video={this.state.selectedVideo} />
+                        </div>
+                        <div className="five wide column">
+                            <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos}/>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
