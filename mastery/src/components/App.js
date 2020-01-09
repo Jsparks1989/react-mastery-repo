@@ -9,6 +9,13 @@ class App extends React.Component {
 
     // initializing state.videos as an empty array.
     state = { videos: [], selectedVideo: null };
+
+    // Setting a default search for app.
+    // Using componentDidMount function to automatically search for reactjs
+    // when App.js first renders/loads.
+    componentDidMount() {
+        this.onTermSubmit('reactjs');
+    }
  
     onTermSubmit = async (term) => {
         const response = await youtube.get('/search', {
@@ -17,7 +24,10 @@ class App extends React.Component {
             }
         });
 
-        this.setState({ videos: response.data.items });
+        this.setState({ 
+            videos: response.data.items,
+            selectedVideo: response.data.items[0]
+        });
     }
 
     searchBarInput = () => {
