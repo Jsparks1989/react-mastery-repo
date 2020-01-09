@@ -40,8 +40,9 @@ class App extends React.Component {
             <div className="ui container">
                 <SearchBar onFormSubmit={this.onTermSubmit}/>
                 {/* I have recieved {this.state.videos.length} videos from my search. */}
-                <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos}/>
                 <VideoDetail video={this.state.selectedVideo} />
+                <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos}/>
+                
             </div>
         );
     }
